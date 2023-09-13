@@ -76,10 +76,10 @@ public class oilDistillAmountDefine {
         GTExtraHeavyOilProduceGasAmount=Integer.parseInt(properties.getProperty("GTExtraHeavyOilProduceGasAmount"));
     }
     public void init(){
-        System.out.println("init");
+        log.info("init");
     }
     public void destroy(){
-        System.out.println("destroy");
+        log.info("destroy");
     }
 
 }

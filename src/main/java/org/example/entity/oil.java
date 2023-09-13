@@ -10,17 +10,16 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class oil {
     private final String oilType;
-    private double produceHeavyOilAmount;
-    private double produceLightOilAmount;
-    private double produceNaphthaAmount;
-    private double produceGasAmount;
+    private final double produceHeavyOilAmount;
+    private final double produceLightOilAmount;
+    private final double produceNaphthaAmount;
+    private final double produceGasAmount;
     private final oilDistillAmountDefine define;
 
     public oil(String type){
         this.oilType=type;
         AnnotationConfigApplicationContext context=new AnnotationConfigApplicationContext(mainConfiguration.class);
         define=context.getBean(oilDistillAmountDefine.class);
-        System.out.println(define);
         switch (oilType) {
             case "BCoil" -> {
                 produceHeavyOilAmount = define.getBcOilProduceHeavyOilAmount();
@@ -52,6 +51,7 @@ public class oil {
                 produceNaphthaAmount = define.getGTExtraHeavyOilProduceNaphthaAmount();
                 produceGasAmount = define.getGTExtraHeavyOilProduceGasAmount();
             }
+            default -> throw new IllegalArgumentException("油的字符串出错了");
         }
     }
 
